@@ -3,16 +3,55 @@
   <groupId>com.avides.xml</groupId>
   <artifactId>sax-xom-parser</artifactId>
   <name>sax-xom-parser</name>
-  <version>0.1.0-RELEASE</version>
+  <version>0.1.1-RELEASE</version>
 
   <properties>
+    <!-- System -->
+    <timestamp>${maven.build.timestamp}</timestamp>
+    <maven.build.timestamp.format>dd.MM.yyyy HH:mm</maven.build.timestamp.format>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.8</java.version>
+    <!-- Testing -->
+    <jacoco.version>0.7.8</jacoco.version>
+    <powermock.version>1.6.6</powermock.version>
+    <easymock.version>3.4</easymock.version>
     <cobertura.version>2.7</cobertura.version>
     <coveralls.version>4.1.0</coveralls.version>
-    <powermock.version>1.6.3</powermock.version>
-    <easymock.version>3.4</easymock.version>
   </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.itelg</groupId>
+      <artifactId>xpath-helper</artifactId>
+      <version>0.4.6-RELEASE</version>
+    </dependency>
+
+    <!-- Testing -->
+    <dependency>
+      <groupId>org.easymock</groupId>
+      <artifactId>easymock</artifactId>
+      <version>${easymock.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.powermock</groupId>
+      <artifactId>powermock-module-junit4</artifactId>
+      <version>${powermock.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.powermock</groupId>
+      <artifactId>powermock-api-easymock</artifactId>
+      <version>${powermock.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.easytesting</groupId>
+      <artifactId>fest-assert</artifactId>
+      <version>1.4</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
   <scm>
     <url>https://github.com/avides/sax-xom-parser</url>
@@ -23,7 +62,7 @@
   <developers>
     <developer>
       <name>Julian Eggers</name>
-      <email>eggers.julian@gmail.com</email>
+      <email>jeggers@avides.com</email>
     </developer>
   </developers>
 
@@ -39,22 +78,21 @@
       <!-- BUILD AND FILES -->
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.3</version>
+        <version>3.6.1</version>
         <configuration>
           <source>${java.version}</source>
           <target>${java.version}</target>
-          <outputEncoding>UTF-8</outputEncoding>
         </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-        <version>2.4</version>
+        <version>3.0.1</version>
         <executions>
           <execution>
             <id>attach-sources</id>
             <goals>
-              <goal>jar-no-fork</goal>
+              <goal>jar</goal>
             </goals>
           </execution>
         </executions>
@@ -142,43 +180,12 @@
 
   <distributionManagement>
     <repository>
-      <id>avides-artifactory</id>
-      <name>artifactory-releases</name>
-      <url>http://artifactory/artifactory/libs-release-local</url>
+      <id>libs-release-internal</id>
+      <url>http://mvnrepository.app.avidesmedia/libs-release-internal</url>
     </repository>
+    <snapshotRepository>
+      <id>libs-snapshot-internal</id>
+      <url>http://mvnrepository.app.avidesmedia/libs-snapshot-internal</url>
+    </snapshotRepository>
   </distributionManagement>
-
-  <dependencies>
-    <dependency>
-      <groupId>com.itelg</groupId>
-      <artifactId>xpath-helper</artifactId>
-      <version>0.4.6-RELEASE</version>
-    </dependency>
-
-    <!-- Testing -->
-    <dependency>
-      <groupId>org.easymock</groupId>
-      <artifactId>easymock</artifactId>
-      <version>${easymock.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.powermock</groupId>
-      <artifactId>powermock-module-junit4</artifactId>
-      <version>${powermock.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.powermock</groupId>
-      <artifactId>powermock-api-easymock</artifactId>
-      <version>${powermock.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.easytesting</groupId>
-      <artifactId>fest-assert</artifactId>
-      <version>1.4</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
 </project>
