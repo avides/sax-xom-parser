@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE epics SYSTEM "any-dtd.dtd">
+<epics>
+  <epic id="E123">
+    <name>Write sax parser</name>
+    <tickets>
+      <ticket id="T848" name="Create library">
+        <subtask id="S347" name="Create git repository"/>
+        <subtask id="S348" name="Create jenkins build">
+          <description>Create travis build too!</description>
+        </subtask>
+      </ticket>
+    </tickets>
+  </epic>
+  <epic id="E231">
+    <name>Ticket planning</name>
+  </epic>
+</epics>

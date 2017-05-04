@@ -1,6 +1,7 @@
 package com.avides.xml.saxxomparser;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 import org.junit.Assert;
@@ -20,7 +21,31 @@ public class DocumentSaxParserTest
     {
         try (InputStream inputStream = new FileInputStream("src/test/resources/test.xml"))
         {
-            DocumentHelper.parse(inputStream, "epic", callbackHandler);
+            DocumentHelper.parse(inputStream, "epic", callbackHandler, true);
+            Assert.assertEquals(2, callbackHandler.documents);
+        }
+        catch (Exception e)
+        {
+            Assert.fail(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    @Test(expected = FileNotFoundException.class)
+    public void testParseWithNotExistingDtdFile() throws Exception
+    {
+        try (InputStream inputStream = new FileInputStream("src/test/resources/test_with_dtd.xml"))
+        {
+            DocumentHelper.parse(inputStream, "epic", callbackHandler, true);
+        }
+    }
+
+    @Test
+    public void testParseWithNotExistingDtdFileAndWithoutValidation()
+    {
+        try (InputStream inputStream = new FileInputStream("src/test/resources/test_with_dtd.xml"))
+        {
+            DocumentHelper.parse(inputStream, "epic", callbackHandler, false);
             Assert.assertEquals(2, callbackHandler.documents);
         }
         catch (Exception e)

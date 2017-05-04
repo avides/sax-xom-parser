@@ -7,10 +7,27 @@ import javax.xml.parsers.SAXParserFactory;
 
 public class DocumentHelper
 {
-    public static void parse(InputStream inputStream, String elementTagName, DocumentCallbackHandler callbackHandler) throws Exception
+    private DocumentHelper()
+    {
+
+    }
+
+    public static void parse(final InputStream inputStream, final String elementTagName, final DocumentCallbackHandler callbackHandler, final boolean withValidation) throws Exception
     {
         DocumentSaxParser handler = new DocumentSaxParser(elementTagName, callbackHandler);
-        SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+        SAXParser parser = buildSAXParser(withValidation);
         parser.parse(inputStream, handler);
+    }
+
+    private static SAXParser buildSAXParser(final boolean withValidation) throws Exception
+    {
+        SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
+
+        if (!withValidation)
+        {
+            saxParserFactory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+        }
+
+        return saxParserFactory.newSAXParser();
     }
 }

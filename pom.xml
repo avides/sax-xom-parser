@@ -3,7 +3,7 @@
   <groupId>com.avides.xml</groupId>
   <artifactId>sax-xom-parser</artifactId>
   <name>sax-xom-parser</name>
-  <version>0.1.1-RELEASE</version>
+  <version>0.1.2-RELEASE</version>
 
   <properties>
     <!-- System -->
@@ -12,7 +12,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.8</java.version>
     <!-- Testing -->
-    <jacoco.version>0.7.8</jacoco.version>
+    <jacoco.version>0.7.9</jacoco.version>
     <powermock.version>1.6.6</powermock.version>
     <easymock.version>3.4</easymock.version>
     <cobertura.version>2.7</cobertura.version>
