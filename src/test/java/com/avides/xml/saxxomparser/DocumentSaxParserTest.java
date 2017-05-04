@@ -21,7 +21,7 @@ public class DocumentSaxParserTest
     {
         try (InputStream inputStream = new FileInputStream("src/test/resources/test.xml"))
         {
-            DocumentHelper.parse(inputStream, "epic", callbackHandler, true);
+            DocumentHelper.parse(inputStream, "epic", callbackHandler);
             Assert.assertEquals(2, callbackHandler.documents);
         }
         catch (Exception e)
@@ -36,7 +36,7 @@ public class DocumentSaxParserTest
     {
         try (InputStream inputStream = new FileInputStream("src/test/resources/test_with_dtd.xml"))
         {
-            DocumentHelper.parse(inputStream, "epic", callbackHandler, true);
+            DocumentHelper.parse(inputStream, "epic", callbackHandler);
         }
     }
 
@@ -45,7 +45,7 @@ public class DocumentSaxParserTest
     {
         try (InputStream inputStream = new FileInputStream("src/test/resources/test_with_dtd.xml"))
         {
-            DocumentHelper.parse(inputStream, "epic", callbackHandler, false);
+            DocumentHelper.parseWithoutValidation(inputStream, "epic", callbackHandler);
             Assert.assertEquals(2, callbackHandler.documents);
         }
         catch (Exception e)

@@ -12,14 +12,17 @@ public class DocumentHelper
 
     }
 
-    public static void parse(final InputStream inputStream, final String elementTagName, final DocumentCallbackHandler callbackHandler, final boolean withValidation) throws Exception
+    public static void parse(final InputStream inputStream, final String elementTagName, final DocumentCallbackHandler callbackHandler) throws Exception
     {
-        DocumentSaxParser handler = new DocumentSaxParser(elementTagName, callbackHandler);
-        SAXParser parser = buildSAXParser(withValidation);
-        parser.parse(inputStream, handler);
+        buildAndParse(inputStream, elementTagName, callbackHandler, true);
     }
 
-    private static SAXParser buildSAXParser(final boolean withValidation) throws Exception
+    public static void parseWithoutValidation(final InputStream inputStream, final String elementTagName, final DocumentCallbackHandler callbackHandler) throws Exception
+    {
+        buildAndParse(inputStream, elementTagName, callbackHandler, false);
+    }
+
+    private static void buildAndParse(final InputStream inputStream, final String elementTagName, final DocumentCallbackHandler callbackHandler, final boolean withValidation) throws Exception
     {
         SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
 
@@ -28,6 +31,8 @@ public class DocumentHelper
             saxParserFactory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
         }
 
-        return saxParserFactory.newSAXParser();
+        DocumentSaxParser handler = new DocumentSaxParser(elementTagName, callbackHandler);
+        SAXParser parser = saxParserFactory.newSAXParser();
+        parser.parse(inputStream, handler);
     }
 }
