@@ -17,12 +17,14 @@ public class DocumentHelper
         buildAndParse(inputStream, elementTagName, callbackHandler, true);
     }
 
-    public static void parseWithoutValidation(final InputStream inputStream, final String elementTagName, final DocumentCallbackHandler callbackHandler) throws Exception
+    public static void parseWithoutValidation(final InputStream inputStream, final String elementTagName, final DocumentCallbackHandler callbackHandler)
+            throws Exception
     {
         buildAndParse(inputStream, elementTagName, callbackHandler, false);
     }
 
-    private static void buildAndParse(final InputStream inputStream, final String elementTagName, final DocumentCallbackHandler callbackHandler, final boolean withValidation) throws Exception
+    private static void buildAndParse(final InputStream inputStream, final String elementTagName, final DocumentCallbackHandler callbackHandler,
+            final boolean withValidation) throws Exception
     {
         SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
 
