@@ -9,6 +9,6 @@ public abstract class StringDocumentCallbackHandler implements DocumentCallbackH
     {
         process(document.toXML());
     }
-    
+
     public abstract void process(String xml);
 }
