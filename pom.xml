@@ -42,26 +42,30 @@
     <jacoco.version>0.8.5</jacoco.version>
     <powermock.version>2.0.4</powermock.version>
     <easymock.version>4.1</easymock.version>
+    <assertj.version>3.14.0</assertj.version>
+    <xpath-helper.version>0.5.3-RELEASE</xpath-helper.version>
     <!-- Build -->
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     <maven-source-plugin.version>3.2.0</maven-source-plugin.version>
     <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
     <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
-    <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
-    <maven-failsafe-plugin.version>2.22.1</maven-failsafe-plugin.version>
+    <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+    <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
     <maven-enforcer-plugin.version>3.0.0-M2</maven-enforcer-plugin.version>
     <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
     <maven-scm-provider-gitexe.version>1.11.2</maven-scm-provider-gitexe.version>
     <exists-maven-plugin.version>0.0.6</exists-maven-plugin.version>
-    <github-release-plugin.version>1.2.0</github-release-plugin.version>
+    <github-release-plugin.version>1.4.0</github-release-plugin.version>
     <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
+    <!-- Other -->
+    <xom.version>1.2.10</xom.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>com.io7m.xom</groupId>
       <artifactId>xom</artifactId>
-      <version>1.2.10</version>
+      <version>${xom.version}</version>
       <exclusions>
         <exclusion>
           <artifactId>xalan</artifactId>
@@ -78,7 +82,7 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.14.0</version>
+      <version>${assertj.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -109,7 +113,7 @@
     <dependency>
       <groupId>com.itelg</groupId>
       <artifactId>xpath-helper</artifactId>
-      <version>0.5.3-RELEASE</version>
+      <version>${xpath-helper.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
