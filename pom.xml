@@ -1,41 +1,71 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>com.avides.xml</groupId>
   <artifactId>sax-xom-parser</artifactId>
+  <version>2.0.0</version>
+
   <name>sax-xom-parser</name>
   <description>XML-streaming-parser with xom-support</description>
   <url>https://github.com/avides/sax-xom-parser</url>
-  <version>1.0.0-RELEASE</version>
+  <organization>
+    <name>AVIDES Media AG</name>
+    <url>http://www.avides.com</url>
+  </organization>
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>http://www.opensource.org/licenses/mit-license.php</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Julian Eggers</name>
+      <email>eggers.julian@gmail.com</email>
+    </developer>
+  </developers>
+
+  <scm>
+    <url>https://github.com/avides/sax-xom-parser</url>
+    <connection>scm:git:https://github.com/avides/sax-xom-parser.git</connection>
+    <developerConnection>scm:git:https://github.com/avides/sax-xom-parser.git</developerConnection>
+  </scm>
 
   <properties>
     <!-- System -->
     <timestamp>${maven.build.timestamp}</timestamp>
     <maven.build.timestamp.format>dd.MM.yyyy HH:mm</maven.build.timestamp.format>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>1.8</java.version>
+    <java.version>11</java.version>
     <!-- Testing -->
-    <jacoco.version>0.8.2</jacoco.version>
-    <powermock.version>2.0.0-RC.3</powermock.version>
-    <easymock.version>4.0.1</easymock.version>
+    <jacoco.version>0.8.5</jacoco.version>
+    <powermock.version>2.0.4</powermock.version>
+    <easymock.version>4.1</easymock.version>
+    <assertj.version>3.14.0</assertj.version>
+    <xpath-helper.version>0.5.3-RELEASE</xpath-helper.version>
     <!-- Build -->
-    <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
-    <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
-    <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
+    <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+    <maven-source-plugin.version>3.2.0</maven-source-plugin.version>
+    <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
     <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
-    <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
-    <maven-failsafe-plugin.version>2.22.1</maven-failsafe-plugin.version>
+    <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+    <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
+    <maven-enforcer-plugin.version>3.0.0-M2</maven-enforcer-plugin.version>
     <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
-    <maven-scm-provider-gitexe.version>1.11.1</maven-scm-provider-gitexe.version>
+    <maven-scm-provider-gitexe.version>1.11.2</maven-scm-provider-gitexe.version>
     <exists-maven-plugin.version>0.0.6</exists-maven-plugin.version>
-    <github-release-plugin.version>1.2.0</github-release-plugin.version>
+    <github-release-plugin.version>1.4.0</github-release-plugin.version>
     <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
+    <!-- Other -->
+    <xom.version>1.2.10</xom.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>com.io7m.xom</groupId>
       <artifactId>xom</artifactId>
-      <version>1.2.10</version>
+      <version>${xom.version}</version>
       <exclusions>
         <exclusion>
           <artifactId>xalan</artifactId>
@@ -52,7 +82,7 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.11.1</version>
+      <version>${assertj.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -83,30 +113,17 @@
     <dependency>
       <groupId>com.itelg</groupId>
       <artifactId>xpath-helper</artifactId>
-      <version>0.5.3-RELEASE</version>
+      <version>${xpath-helper.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
 
-  <scm>
-    <url>https://github.com/avides/sax-xom-parser</url>
-    <connection>scm:git:https://github.com/avides/sax-xom-parser.git</connection>
-    <developerConnection>scm:git:https://github.com/avides/sax-xom-parser.git</developerConnection>
-  </scm>
-
-  <developers>
-    <developer>
-      <name>Julian Eggers</name>
-      <email>eggers.julian@gmail.com</email>
-    </developer>
-  </developers>
-
-  <licenses>
-    <license>
-      <name>MIT License</name>
-      <url>http://www.opensource.org/licenses/mit-license.php</url>
-    </license>
-  </licenses>
+  <repositories>
+    <repository>
+      <id>sonatype-oss</id>
+      <url>https://oss.sonatype.org/content/repositories/releases</url>
+    </repository>
+  </repositories>
 
   <build>
     <plugins>
@@ -117,7 +134,6 @@
         <configuration>
           <source>${java.version}</source>
           <target>${java.version}</target>
-          <outputEncoding>UTF-8</outputEncoding>
         </configuration>
       </plugin>
       <plugin>
@@ -157,6 +173,13 @@
             <goals>
               <goal>sign</goal>
             </goals>
+            <configuration>
+              <!-- Hopefully fixed in version 1.7 ? (https://issues.apache.org/jira/browse/MGPG-59) -->
+              <gpgArguments>
+                <arg>--pinentry-mode</arg>
+                <arg>loopback</arg>
+              </gpgArguments>
+            </configuration>
           </execution>
         </executions>
       </plugin>
@@ -191,6 +214,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
+        <version>${maven-enforcer-plugin.version}</version>
         <configuration>
           <rules>
             <dependencyConvergence />
