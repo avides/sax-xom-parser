@@ -67,7 +67,7 @@ public class DocumentSaxParser extends DefaultHandler2
         }
     }
 
-    private Element createElement(String name, Attributes attributes)
+    private static Element createElement(String name, Attributes attributes)
     {
         Element element = new Element(name);
 

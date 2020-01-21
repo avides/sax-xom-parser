@@ -3,7 +3,7 @@
 
   <groupId>com.avides.xml</groupId>
   <artifactId>sax-xom-parser</artifactId>
-  <version>2.0.0</version>
+  <version>2.0.1</version>
 
   <name>sax-xom-parser</name>
   <description>XML-streaming-parser with xom-support</description>
@@ -67,6 +67,10 @@
       <artifactId>xom</artifactId>
       <version>${xom.version}</version>
       <exclusions>
+        <exclusion>
+          <groupId>xml-apis</groupId>
+          <artifactId>xml-apis</artifactId>
+        </exclusion>
         <exclusion>
           <artifactId>xalan</artifactId>
           <groupId>xalan</groupId>
@@ -322,7 +326,7 @@
         <version>${exists-maven-plugin.version}</version>
         <configuration>
           <property>skip-deploy-to-central</property>
-          <repository>http://central.maven.org/maven2/</repository>
+          <repository>https://oss.sonatype.org/content/repositories/releases/</repository>
         </configuration>
         <executions>
           <execution>
