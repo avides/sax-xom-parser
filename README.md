@@ -14,6 +14,6 @@ XML-streaming-parser with [XOM](http://www.xom.nu/ "XOM")-support
 <dependency>
 	<groupId>com.avides.xml</groupId>
 	<artifactId>sax-xom-parser</artifactId>
-	<version>2.0.1</version>
+	<version>2.1.0</version>
 </dependency>
 ```
